@@ -64,7 +64,10 @@
         const coverUrl      = document.querySelector('#coverUrl');
         const postTitle     = document.querySelector('#postTitle');
         const postCategory  = document.querySelector('#postCategory');
-
+        
+        
+        let today = new Date().toISOString().slice(0, 10)
+        console.log(today);
 
         coverUrl.addEventListener('keyup', () => {
             
@@ -97,10 +100,9 @@
             document.getElementById('downloadButton').addEventListener('click', function() {
                 const postData = `---
 title@${postTitle.value}
-date@
+date@${today}
 category@${postCategory.value}
 cover@${coverUrl.value}
-
 ---e
 
 ${postContent}
@@ -110,7 +112,7 @@ ${postContent}
 
                 let link = document.createElement('a');
                 link.href = window.URL.createObjectURL(blob);
-                link.download = 'postContent.txt';
+                link.download = `${today}_${postCategory.value.toLowerCase()}.txt`;
 
                 document.body.appendChild(link);
 
