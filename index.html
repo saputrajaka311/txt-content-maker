@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="ckeditor.js"></script> -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+
+
+</head>
+<body>
+    <main>
+        <section id="contentSection">
+            <div class="content-container">
+                <div id="contentInfo">
+                    <div class="section-editor">
+                        <h1 class="heading-text">Content Info</h1>
+                        <div class="content-info-input">
+                            <div class="preview-cover">
+                                <div id="contentCover"></div>
+                            </div>
+
+                            <div class="input-comp">
+                                <label for="coverUrl">Cover URL</label>
+                                <input type="text" id="coverUrl" placeholder="http://pic.com/picture1">
+                            </div>
+
+                            <div class="input-comp">
+                                <label for="postTitle">Title</label>
+                                <input type="text" id="postTitle" placeholder="Post 1 Title">
+                            </div>
+                            <div class="input-comp">
+                                <label for="postCategory">Category</label>
+                                <input type="text" id="postCategory" placeholder="Game">
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id="contentEditor">
+                    <div class="section-editor">
+                        <div id="editor">
+                            <p>Write your content</p>
+                        </div>
+                        <button id="downloadButton" class="button">Create Post</button>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+    <script>
+
+        const postCover     = document.querySelector('#contentCover');
+        const coverUrl      = document.querySelector('#coverUrl');
+        const postTitle     = document.querySelector('#postTitle');
+        const postCategory  = document.querySelector('#postCategory');
+
+
+        coverUrl.addEventListener('keyup', () => {
+            
+            postCover.style.background      = `url('${coverUrl.value}') center`;
+            postCover.style.background.size = "contain";
+        }, false);
+
+        let postContent;
+        ClassicEditor
+            .create( document.querySelector( '#editor' ),{
+                toolbar: {
+                    items :[ 'undo', 'redo','heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'codeBlock' ],
+                }
+                
+            }).then( newEditor => {
+                editor = newEditor;
+                ['click','keyup'].forEach( function(evt) {
+                    this.addEventListener(evt, () => {
+                        const editorData = editor.getData();
+                        postContent = editorData;
+                        console.log(postContent);
+                    }, false);
+                });
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    
+
+            document.getElementById('downloadButton').addEventListener('click', function() {
+            
+            // Create a Blob object
+            let blob = new Blob([postContent], { type: 'text/plain' });
+
+            // Create a link element to download the Blob
+            let link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'postContent.txt';
+
+            // Append the link to the body
+            document.body.appendChild(link);
+
+            // Programmatically click the link to trigger the download
+            link.click();
+
+            // Clean up
+            document.body.removeChild(link);
+        });
+     
+    </script>
+</body>
+</html>

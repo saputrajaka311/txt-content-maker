@@ -1,0 +1,172 @@
+body 
+{
+    margin: 0;
+    padding:0;
+    background-color:#1E1D29 ;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+/* SECTION */
+
+
+.content-container
+{
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: calc(30% - 2rem)  calc(70% - 2rem);
+    grid-gap:2rem;
+    justify-content: center;
+    align-content: center;
+    height:100vh;
+    /* background-color: purple; */
+}
+
+
+#contentInfo, #contentEditor
+{
+    width: 100%;
+    /* background-color: aqua; */
+    min-height: 100%;
+}
+
+
+.heading-text
+{
+    color: #F8FFFF;
+    font-weight: bold;
+}
+
+.section-editor
+{
+    border-radius: 2rem;
+    background:#35384E;
+    padding: 2rem;
+}
+.content-info-input
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.preview-cover
+{
+    height: 10rem;
+    background-color: #27283A;
+    border-radius: 2rem;
+    width: calc(100% - 0.8rem);
+    padding: 0.4rem;
+}
+#contentCover
+{
+    height: 100%;
+    width: 100%;
+    background-color: #4263D0;
+    border-radius: inherit;
+}
+
+#contentEditor .section-editor
+{
+    padding-bottom: 0; 
+    position: relative;
+    text-align: center;   
+}
+
+
+#downloadButton
+{
+    width:50%;
+    font-size: 1.5em;
+    margin:  0 auto;
+    margin-top: 1rem;
+    /* margin-bottom: -5rem; */
+    transform: translateY(1.5rem);
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* COMPONENT */
+
+.button
+{
+    color: #F8FFFF;
+    border-radius: 2rem;
+    background-color: #4263D0;
+    outline: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+
+
+
+.input-comp
+{
+    padding: 0.7rem 1.2rem;
+    border-radius: 2rem;
+    background-color: #27283A;
+    display: flex;
+    flex-direction: column;
+    color: #F8FFFF;
+    gap: 5px;
+}
+.input-comp label
+{
+    font-size: 0.6rem;
+}
+.input-comp input
+{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    color: #F8FFFF;
+}
+
+
+
+
+
+
+/* CKEDITOR */
+.ck-content {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    color: #F8FFFF;
+    background-color: aqua;
+    border-radius: 5px;
+    height: calc(100vh - 8rem - 6rem);
+}
+
+
+.ck-editor__editable, .ck-toolbar{
+    /* border-radius: 2rem !important; */
+    /* border: 1px solid aqua; */
+    border: none !important;
+    background-color: #27283A !important;
+}
+
+
+.ck-toolbar
+{
+    color: #F8FFFF !important;
+    border : #27283A 1px solid !important;
+    background-color: #4263D0 !important;
+    border-radius: 2rem 2rem 0 0 !important;
+}
+
+.ck-editor__editable
+{
+    border-radius: 0 0 2rem 2rem !important;
+}
+
+
+
