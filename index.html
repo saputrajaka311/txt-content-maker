@@ -85,7 +85,7 @@
                     this.addEventListener(evt, () => {
                         const editorData = editor.getData();
                         postContent = editorData;
-                        console.log(postContent);
+                        // console.log(postContent);
                     }, false);
                 });
             } )
@@ -95,24 +95,29 @@
     
 
             document.getElementById('downloadButton').addEventListener('click', function() {
-            
-            // Create a Blob object
-            let blob = new Blob([postContent], { type: 'text/plain' });
+                const postData = `---
+title@${postTitle.value}
+date@
+category@${postCategory.value}
+cover@${coverUrl.value}
 
-            // Create a link element to download the Blob
-            let link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'postContent.txt';
+---e
 
-            // Append the link to the body
-            document.body.appendChild(link);
+${postContent}
+`;
+                console.log(postData);
+                let blob = new Blob([postData], { type: 'text/plain' });
 
-            // Programmatically click the link to trigger the download
-            link.click();
+                let link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'postContent.txt';
 
-            // Clean up
-            document.body.removeChild(link);
-        });
+                document.body.appendChild(link);
+
+                link.click();
+
+                document.body.removeChild(link);
+            });
      
     </script>
 </body>

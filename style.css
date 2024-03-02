@@ -1,3 +1,28 @@
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    
+    border-radius: 2rem;
+    background: #4263D0;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4263d09a;
+  }
+
+
+
+
 body 
 {
     margin: 0;
@@ -5,6 +30,7 @@ body
     background-color:#1E1D29 ;
     font-family: 'Raleway', sans-serif;
 }
+
 
 
 
@@ -139,7 +165,6 @@ body
 /* CKEDITOR */
 .ck-content {
     font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
     color: #F8FFFF;
     background-color: aqua;
     border-radius: 5px;
@@ -167,6 +192,7 @@ body
 {
     border-radius: 0 0 2rem 2rem !important;
 }
+
 
 
 
